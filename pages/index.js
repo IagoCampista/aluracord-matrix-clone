@@ -92,6 +92,9 @@ export default function PaginaInicial() {
             {/* Formulário */}
             <Box
               as="form"
+              onSubmit={function (eventInfo) {
+                eventInfo.preventDefault();
+              }}
               
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
