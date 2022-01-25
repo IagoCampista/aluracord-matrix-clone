@@ -66,7 +66,6 @@ export default function PaginaInicial() {
     const router = useRouter();
     return (
       <>
-        <GlobalStyle />
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
