@@ -1,7 +1,8 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Box, Button, Text, TextField, Image } from '@skynexui/components'
 import appConfig from '../config.json'
-import { useRouter } from 'next/router';
+
 
 function GlobalStyle() {
     return (
@@ -94,6 +95,7 @@ export default function PaginaInicial() {
               as="form"
               onSubmit={function (eventInfo) {
                 eventInfo.preventDefault();
+                router.push('/chat');
               }}
               
               styleSheet={{
