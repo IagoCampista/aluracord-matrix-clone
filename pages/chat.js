@@ -1,11 +1,19 @@
 import { Box, Text, TextField, Image, Button } from '@skynexui/components';
-import React from 'react';
+import React, { useState } from 'react';
 import appConfig from '../config.json';
 
 export default function ChatPage() {
-    // Sua lógica vai aqui
+    const [mensagem, setMensagem] = useState('');
+    const [listaMensagens, setListaMensagens] = useState([]);
 
-    // ./Sua lógica vai aqui
+    function handleNovaMensagem(novaMensagem) {
+        setListaMensagens([
+            ...listaMensagens,
+            novaMensagem,
+        ]);
+        setMensagem('');        
+    }
+
     return (
         <Box
             styleSheet={{
@@ -25,8 +33,8 @@ export default function ChatPage() {
                     borderRadius: '5px',
                     backgroundColor: appConfig.theme.colors.neutrals[700],
                     height: '100%',
-                    maxWidth: '95%',
-                    maxHeight: '95vh',
+                    maxWidth: '85%',
+                    maxHeight: '85vh',
                     padding: '32px',
                 }}
             >
@@ -43,9 +51,8 @@ export default function ChatPage() {
                         padding: '16px',
                     }}
                 >
-
+{/* parado 43:30 */}
                     {/* <MessageList mensagens={[]} /> */}
-
                     <Box
                         as="form"
                         styleSheet={{
@@ -54,6 +61,18 @@ export default function ChatPage() {
                         }}
                     >
                         <TextField
+                            value={mensagem}
+                            onChange={(event) =>{
+                                const valor = event.target.value;
+                                setMensagem(valor);
+                            }}
+                            onKeyPress={(event) =>{
+                                if(event.key === 'Enter'){
+                                    event.preventDefault();
+                                    handleNovaMensagem(mensagem);
+                                }
+                            }}
+
                             placeholder="Insira sua mensagem aqui..."
                             type="textarea"
                             styleSheet={{
