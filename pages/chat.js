@@ -7,9 +7,14 @@ export default function ChatPage() {
     const [listaMensagens, setListaMensagens] = useState([]);
 
     function handleNovaMensagem(novaMensagem) {
+        const mensagem = {
+            id: listaMensagens.length + 1,
+            de:'carloschagas',
+            texto: novaMensagem,
+        };
         setListaMensagens([
             ...listaMensagens,
-            novaMensagem,
+            mensagem,
         ]);
         setMensagem('');        
     }
@@ -51,8 +56,15 @@ export default function ChatPage() {
                         padding: '16px',
                     }}
                 >
-{/* parado 43:30 */}
-                    {/* <MessageList mensagens={[]} /> */}
+                    <MessageList mensagens={[]} />
+                    {listaMensagens.map((mensagemAtual) =>{
+                        return(
+                            <li key={mensagemAtual.id}>
+                                {mensagemAtual.de}: {mensagemAtual.texto}
+                            </li>
+                        )
+                    })}
+
                     <Box
                         as="form"
                         styleSheet={{
